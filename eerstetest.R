@@ -11,4 +11,3 @@ names(dataset)
 # geef enkel de variabele hd weer
 dataset$hd
 
-;jejcejkfherkjfrkh

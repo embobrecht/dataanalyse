@@ -1,0 +1,7 @@
+git clone https://github.com/embobrecht/dataanalyse.git
+git pull orgin master
+
+
+git add filename
+git commit -m "update/delete/add + tekst"
+git push origin master
