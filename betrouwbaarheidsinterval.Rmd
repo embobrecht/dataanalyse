@@ -1,0 +1,82 @@
+---
+title: "betrouwbaarheidsintervallen"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+
+```{r oefening}
+
+library(readr)
+data = read.csv("nesexample2.csv")
+
+```
+
+#dataanalyse eerste zicht
+
+```{r data summary}
+summary(data$therm.dems)
+sd(data$therm.dems, na.rm= TRUE)
+# na.rm verwijder al de na's
+boxplot(data$therm.dems)
+
+```
+
+# we halen de na's uit de dataset
+
+# we kijken hoeveel elementen er in narmdata zitten
+
+```{r remove na}
+narmdata = na.omit(data$therm.dems)
+N = length(narmdata)
+N
+
+
+aantalloops = 1000
+
+
+betrouwjehet = function(aantalloops,grootte,data){
+  gemiddelde  = mean(data)
+  aantalsucces = 0
+  for (i in 1:aantalloops){
+  steekproef = sample(data,grootte)
+      # 9betrouwbaarheidsinterval 75
+      mu = mean(steekproef)
+      si = sd(steekproef)
+      
+      
+      minimum = mu-(qnorm(0.875)*(si/sqrt(grootte)))
+      maximum = mu+(qnorm(0.875)*(si/sqrt(grootte)))
+      
+      
+      
+      if (minimum < gemiddelde & gemiddelde < maximum){
+        aantalsucces = aantalsucces + 1}
+        
+      
+
+  }
+  percentage = aantalsucces/aantalloops
+  return = percentage
+    }
+
+print(betrouwjehet(100000,64,narmdata))
+
+resultaatvector=c()
+loopVector = c(1,10,100,500,1000,5000,10000,100000)
+for (i in 1:length(loopVector)){
+  resultaatvector[i] = betrouwjehet(loopVector[i],64,narmdata)
+  }
+plot(loopVector,resultaatvector)
+```
+  
+  
+

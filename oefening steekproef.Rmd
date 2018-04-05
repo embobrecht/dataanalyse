@@ -19,7 +19,7 @@ pnorm(-1.33)
 ```
 
 ##oefening 4.6
-```{r x}
+```{r oef 1}
 
 mu = 2.5
 sigma = 1.5
@@ -36,3 +36,21 @@ pnorm(4,mu,sigma)-pnorm(0.5,mu,sigma)
 ```
 
 ### nog x
+##oefening 4.7
+```{r oef 2}
+
+mu = 0
+sigma = 1
+
+#student t verdeling
+dataset=seq(-4,4,0.1)
+hoogtes_studentt = dt(dataset,25)
+
+#normaal verdeling=
+hoogtes_normaal =dnorm(dataset,mu,sigma)
+
+plot(dataset,hoogtes_studentt,type="l",col ="blue")
+lines(dataset,hoogtes_normaal,col="red")
+
+
+```
