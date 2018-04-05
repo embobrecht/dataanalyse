@@ -1,0 +1,38 @@
+---
+title: "oefening steekproef"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## bepalen linkerstaartkansen
+
+
+
+
+```{r linkerstaartkans}
+pnorm(1.33)
+pnorm(-1.33)
+
+```
+
+##oefening 4.6
+```{r x}
+
+mu = 2.5
+sigma = 1.5
+
+dataset = seq(mu-4*sigma,mu+4*sigma,0.1)
+hoogtes = dnorm(dataset,mu,sigma)
+
+plot(dataset,hoogtes)
+
+pnorm(4,mu,sigma)-pnorm(0.5,mu,sigma)
+
+
+
+```
+
+### nog x
