@@ -53,8 +53,8 @@ betrouwjehet = function(aantalloops,grootte,data){
       si = sd(steekproef)
       
       
-      minimum = mu-(qnorm(0.875)*(si/sqrt(grootte)))
-      maximum = mu+(qnorm(0.875)*(si/sqrt(grootte)))
+      minimum = mu-(qnorm(0.85)*(si/sqrt(grootte)))
+      maximum = mu+(qnorm(0.85)*(si/sqrt(grootte)))
       
       
       
@@ -68,10 +68,10 @@ betrouwjehet = function(aantalloops,grootte,data){
   return = percentage
     }
 
-print(betrouwjehet(100000,64,narmdata))
+print(betrouwjehet(10000,64,narmdata))
 
 resultaatvector=c()
-loopVector = c(1,10,100,500,1000,5000,10000,100000)
+loopVector = c(1,10,100,500,1000,5000,10000,10000)
 for (i in 1:length(loopVector)){
   resultaatvector[i] = betrouwjehet(loopVector[i],64,narmdata)
   }
